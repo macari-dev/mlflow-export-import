@@ -111,7 +111,8 @@ class ModelExporter():
         model = {}
         model["registered_model"] = temp
         model["registered_model"]["versions"] = versions
-        print(model)
+        print(f"model: {model}")
+        print(f"versions: {versions}")
         
         info_attr = {
             "num_target_stages": len(self.stages),
