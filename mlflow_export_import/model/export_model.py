@@ -109,8 +109,10 @@ class ModelExporter():
             else:
                 temp[k] = model[k]
         
-        model = temp
+        model = {}
+        model["registered_model"] = temp
         print(model)
+        
         info_attr = {
             "num_target_stages": len(self.stages),
             "num_target_versions": len(self.versions),
