@@ -97,11 +97,10 @@ class ModelExporter():
         versions, failed_versions = self._export_versions(model_name, ori_versions, output_dir)
 
         model = self.mlflow_client.get_registered_model(model_name)
-        del model.latest_versions
         model = vars(model)
         model["versions"] = versions
         print(model)
-        model.pop("latest_versions", None)
+        model.pop("_latest_versions", None)
 
         info_attr = {
             "num_target_stages": len(self.stages),
