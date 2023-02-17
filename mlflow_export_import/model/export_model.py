@@ -99,7 +99,8 @@ class ModelExporter():
         model = self.mlflow_client.get_registered_model(model_name)
         model = vars(model)
         model["versions"] = versions
-        model.pop("latest_versions",None)
+        print(model)
+        model.pop("latest_versions", None)
 
         info_attr = {
             "num_target_stages": len(self.stages),
