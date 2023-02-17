@@ -152,10 +152,10 @@ def main(model, output_dir, notebook_formats, stages, versions, export_latest_ve
     mlflow_client = mlflow.client.MlflowClient()
     versions = versions.split(",") if versions else []
     exporter = ModelExporter(mlflow_client, 
-       notebook_formats=utils.string_to_list(notebook_formats), 
-       stages=stages, 
-       versions=versions, 
-       export_latest_versions=export_latest_versions
+    notebook_formats=utils.string_to_list(notebook_formats), 
+    stages=stages, 
+    versions=versions, 
+    export_latest_versions=export_latest_versions
     )
     exporter.export_model(model, output_dir)
 
