@@ -99,7 +99,6 @@ class ModelExporter():
         model = self.mlflow_client.get_registered_model(model_name)
         model = vars(model)
         model.pop("_latest_version", None)
-        model["versions"] = versions
 
         temp = {}
         for k in model.keys():
@@ -111,6 +110,7 @@ class ModelExporter():
         
         model = {}
         model["registered_model"] = temp
+        model["registered_model"]["versions"] = versions
         print(model)
         
         info_attr = {
