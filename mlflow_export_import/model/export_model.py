@@ -100,7 +100,8 @@ class ModelExporter():
         model = model.__dict__
         model["versions"] = versions
         model.pop("latest_versions",None)
-
+        del model["latest_versions"]
+        
         info_attr = {
             "num_target_stages": len(self.stages),
             "num_target_versions": len(self.versions),
