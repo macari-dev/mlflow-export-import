@@ -106,9 +106,9 @@ class ModelExporter():
             if k.startswith("_"):
                 new_k = k[1:]
                 temp[new_k] = model[k]
-                model.pop(k, None)
             else:
                 temp[k] = model[k]
+        
         model = temp
         print(model)
         info_attr = {
