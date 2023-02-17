@@ -97,7 +97,7 @@ class ModelExporter():
         versions, failed_versions = self._export_versions(model_name, ori_versions, output_dir)
 
         model = self.mlflow_client.get_registered_model(model_name)
-        model = model.to_dictionary()
+        model = model.__dict__
         model["versions"] = versions
         model.pop("latest_versions",None)
 
