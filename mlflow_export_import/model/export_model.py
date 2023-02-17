@@ -101,12 +101,16 @@ class ModelExporter():
         model.pop("_latest_version", None)
         model["versions"] = versions
 
+        temp = {}
         for k in model.keys():
             if k.startswith("_"):
                 new_k = k[1:]
-                model[new_k] = model[k]
+                temp[new_k] = model[k]
                 model.pop(k, None)
-
+            else:
+                temp[k] = model[k]
+        model = temp
+        print(model)
         info_attr = {
             "num_target_stages": len(self.stages),
             "num_target_versions": len(self.versions),
