@@ -96,10 +96,10 @@ class ModelExporter():
         print(f"Found {len(ori_versions)} '{msg}' versions for model '{model_name}'")
         versions, failed_versions = self._export_versions(model_name, ori_versions, output_dir)
 
-        # model = self.http_client.get(f"registered-models/get", {"name": model_name})
         model = self.mlflow_client.get_registered_model(model_name)
-        model["registered_model"]["versions"] = versions
-        model["registered_model"].pop("latest_versions",None)
+        model = model.__dict__
+        model["versions"] = versions
+        model.pop("latest_versions",None)
 
         info_attr = {
             "num_target_stages": len(self.stages),
